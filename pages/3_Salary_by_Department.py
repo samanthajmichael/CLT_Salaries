@@ -11,3 +11,4 @@ def load_data(csv):
     return df
 
 salary = load_data('data/City_of_Charlotte_Employee_Salaries.csv')
+salary = salary.drop(['OBJECTID', 'Name', 'Unit'], axis=1)

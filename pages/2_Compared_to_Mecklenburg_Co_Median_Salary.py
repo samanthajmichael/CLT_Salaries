@@ -11,6 +11,7 @@ def load_data(csv):
     return df
 
 salary = load_data('data/City_of_Charlotte_Employee_Salaries.csv')
+salary = salary.drop(['OBJECTID', 'Name', 'Unit'], axis=1)
 # Group the data by 'Year' and calculate the average salary for each year
 average_salary_yearly = salary.groupby('Year')['Annual_Rt'].median().reset_index()
 

@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
+import altair as alt
 
 @st.cache_data
 def load_data(csv):
@@ -9,6 +11,7 @@ def load_data(csv):
     return df
 
 salary = load_data('data/City_of_Charlotte_Employee_Salaries.csv')
+salary = salary.drop(['OBJECTID', 'Name', 'Unit'], axis=1)
 st.sidebar.header("Pick two variables for your scatterplot")
 
 x_val = st.sidebar.selectbox("Pick your x-axis",salary.select_dtypes(include=np.number).columns.tolist())
